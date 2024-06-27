@@ -1,0 +1,56 @@
+
+body {
+    background: #e5e5e5;
+}
+
+.encabezado {
+    height: 52px;
+    width: auto;
+}
+
+.contenido {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.entrada_texto {
+    padding-top: 108px;
+    /*padding-left: 240px;
+    padding-right: 50px;*/
+}
+
+#cuadro_de_texto {
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#aviso {
+    display: flex;
+    gap: 8px;
+}
+
+.grupo_boton {
+    display: flex;
+    border-radius: 10px;
+    height: 100px;
+}
+
+.salida_texto {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    width: 400px;
+    height: 800px;
+    padding-top: 20px;
+    margin-bottom: 15px;
+}
+
+#muñeco {
+    padding: 0px 32px;
+    padding-top: 150px;
+    padding-bottom: 30px;
+}
