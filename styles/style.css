@@ -15,7 +15,7 @@ body {
 }
 
 .entrada_texto {
-    padding-top: 108px;
+    padding-top: 54px;
     /*padding-left: 240px;
     padding-right: 50px;*/
 }
@@ -31,10 +31,35 @@ body {
     gap: 8px;
 }
 
-.grupo_boton {
+#grupo_botones{
     display: flex;
-    border-radius: 10px;
-    height: 100px;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 500px;
+}
+
+.botones {
+    height: 55px;
+    width: 235px;
+    border-radius: 20px;
+}
+
+#btn_encriptar {
+    background: #0A3871;
+    color: #D8DFE8;
+    border-color: #D8DFE8;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#btn_desencriptar {
+    background: #D8DFE8;
+    color: #0A3871;
+    border-color: #0A3871;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .salida_texto {
@@ -44,9 +69,8 @@ body {
     align-items: center;
     border-radius: 10px;
     width: 400px;
-    height: 800px;
-    padding-top: 20px;
-    margin-bottom: 15px;
+    height: 600px;
+    padding: 54px 0;
 }
 
 #muñeco {
