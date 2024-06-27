@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 body {
     background: #e5e5e5;
@@ -16,8 +17,6 @@ body {
 
 .entrada_texto {
     padding-top: 54px;
-    /*padding-left: 240px;
-    padding-right: 50px;*/
 }
 
 #cuadro_de_texto {
@@ -28,6 +27,8 @@ body {
 
 #aviso {
     display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
     gap: 8px;
 }
 
@@ -48,7 +49,7 @@ body {
     background: #0A3871;
     color: #D8DFE8;
     border-color: #D8DFE8;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
@@ -57,7 +58,7 @@ body {
     background: #D8DFE8;
     color: #0A3871;
     border-color: #0A3871;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
@@ -75,6 +76,21 @@ body {
 
 #muñeco {
     padding: 0px 32px;
-    padding-top: 150px;
+    padding-top: 80px;
     padding-bottom: 30px;
+}
+
+.aviso_salida {
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#aviso_salida_parrafo {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
 }
