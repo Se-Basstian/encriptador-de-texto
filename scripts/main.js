@@ -7,6 +7,9 @@ function encriptar() {
     let texto_salida = document.getElementById('cuadro_salida');
 
     texto_salida.innerHTML = texto;
+
+    // Limpia el textarea de entrada.
+    document.getElementById("cuadro_entrada").value = '';
 }
 
 function ocultarPorID(identificador) {
