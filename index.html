@@ -15,8 +15,8 @@
             <textarea class="cuadros" id="cuadro_entrada" placeholder="Escriba aquí"></textarea>
             <p id="aviso"><img src="img/Group.png" alt="importanta">Solo letras minúsculas y sin acento</p>
             <div id="grupo_botones">
-                <button onclick="encriptar();" class="botones" id="btn_encriptar">Encriptar</button>
-                <button class="botones" id="btn_desencriptar">Desencriptar</button>
+                <button onclick="btn_encriptar();" class="botones" id="btn_encriptar">Encriptar</button>
+                <button onclick="btn_desEncriptacion();" class="botones" id="btn_desencriptar">Desencriptar</button>
             </div>
         </section>
         <section class="salida_texto">
@@ -24,7 +24,7 @@
             <p class="aviso_salida" id="aviso_salida_titulo">Ningún mensaje fue encontrado</p>
             <p class="aviso_salida" id="aviso_salida_parrafo">Ingrese el texto que desee encriptar o  desencriptar</p>
             <textarea class="cuadros" id="cuadro_salida" readonly hidden></textarea>
-            <button class="botones" id="btn_copiar" hidden>Copiar</button>
+            <button onclick="btn_copiar();" class="botones" id="btn_copiar" hidden>Copiar</button>
         </section>
     </main>
     <footer>
