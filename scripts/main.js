@@ -92,6 +92,7 @@ function cambiarInterfaz2() {
 
 
 /**
+ * PARA UNA FUTURA MEJORA.
  * Usaremos el encriptador de El Cesar en el cual
  * se basa en ponde la tercera letra superior de la
  * letra actual.
