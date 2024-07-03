@@ -6,7 +6,7 @@ function btn_encriptar() {
 
     let texto_salida = document.getElementById('cuadro_salida');
 
-    texto_salida.innerHTML = encriptacionDeCesar(texto);
+    texto_salida.innerHTML = encriptadorSimple(texto);
     
     document.getElementById('cuadro_entrada').value = ''; // Linea encargada de limpiar el textarea de entrada de datos.
 }
@@ -18,18 +18,28 @@ function btn_desEncriptacion() {
 
     let texto_salida = document.getElementById('cuadro_salida');
 
-    texto_salida.innerHTML = desEncriptacion(texto);
+    texto_salida.innerHTML = desEncriptadorSimple(texto);
 
     document.getElementById('cuadro_entrada').value = ''; // Limpia la patalla de entrada.
 }
 
 function btn_copiar() {
-    let cuadro_salir = document.getElementById('cuadro_salida').value;
+
+    const textoCopiado = document.getElementById('cuadro_salida').value;
+    
+    navigator.clipboard.writeText(textoCopiado)
+        .then(
+            () => {
+                alert(`Texto copiado ${textoCopiado}`);
+            }
+        )
+        .catch(
+            err => {
+                alert("Error al copiar", err);
+            }
+        );
 
     cambiarInterfaz2();
-
-    document.getElementById('cuadro_entrada').value = cuadro_salir;
-
 
 }
 
@@ -105,6 +115,41 @@ function encriptacionDeCesar(palabra) {
 }
 
 /**
+ * 
+ * @param {string} palabra 
+ * @returns {string}
+ */
+function encriptadorSimple(palabra) {
+  
+    let nuevaPalabra = '';
+
+    for (let letra of palabra) {
+        switch (letra) {
+            case 'a':
+                nuevaPalabra += "ai";
+                break;
+            case 'e':
+                nuevaPalabra += "enter";
+                break;
+            case 'i':
+                nuevaPalabra += "imes";
+                break;
+            case 'o':
+                nuevaPalabra += "ober";
+                break;
+            case 'u':
+                nuevaPalabra += "ufat";
+                break;
+            default:
+                nuevaPalabra += letra;
+                break;
+        }
+    }
+
+    return nuevaPalabra;
+}
+
+/**
  * Desencriptador del método Cesar
  * @param {string} palabra
  * @returns {string}
@@ -121,5 +166,42 @@ function desEncriptacion(palabra) {
             nuevaPalabra += ' ';
         }
     }
+    return nuevaPalabra;
+}
+
+/**
+*@param {string} palabra 
+*/
+function desEncriptadorSimple(palabra) {
+    let nuevaPalabra = '';
+
+    for (let i = 0; i < palabra.length; i++) {
+        switch (palabra[i]) {
+            case 'a':
+                nuevaPalabra += palabra[i];
+                i += 1;
+                continue;
+            case 'e':
+                nuevaPalabra += palabra[i];
+                i += 4;
+                continue;
+            case 'i':
+                nuevaPalabra += palabra[i];
+                i += 3;
+                continue;
+            case 'o':
+                nuevaPalabra += palabra[i];
+                i += 3;
+                continue;
+            case 'u':
+                nuevaPalabra += palabra[i];
+                i += 3;
+                continue;
+            default:
+                nuevaPalabra += palabra[i];
+                break;
+        }     
+    }
+
     return nuevaPalabra;
 }

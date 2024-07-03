@@ -71,7 +71,7 @@ body {
 
 #grupo_botones{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 20px;
     width: 100%;
 }
@@ -116,7 +116,7 @@ body {
 }
 
 .aviso_salida {
-    width: 100%;
+    width: 85%;
     height: 9.98%;
     text-align: center;
     font-family: var(--main-texto1);
@@ -155,4 +155,82 @@ body {
 .pie_pagina p {
     font-family: var(--main-texto1);
     font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 18px auto;
+    }
+
+    .entrada_texto {
+        width: 75%;
+    }
+
+    #cuadro_entrada {
+        height: 200px;
+    }
+
+    #muñeco {
+        display: none;
+    }
+
+    .salida_texto {
+        width: 75%;
+    }
+
+    #btn_copiar {
+        width: 50%;
+    }
+
+    #cuadro_salida {
+        width: 65%;
+        height: auto;
+    }
+
+    .pie_pagina p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .entrada_texto {
+        width: 90%;
+        padding-top: 15px;
+    }
+
+    #grupo_botones {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .botones {
+        width: 95%;
+        height: 55px;
+        font-size: 16px;
+    }
+
+    .salida_texto {
+        width: 90%;
+    }
+
+    #cuadro_salida {
+        height: 150px;
+        width: 95%;
+        margin-bottom: 12px;
+    }
+
+    #btn_copiar {
+        width: 80%;
+    }
+
+    .pie_pagina p {
+        width: auto;
+        text-align: center;
+        font-size: 0.8rem;
+    }
 }
