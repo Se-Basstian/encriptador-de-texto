@@ -1,208 +1,131 @@
+const input_text = document.querySelector("#input-text");
+const btn_encriptar = document.querySelector("#btn-encriptar");
+const btn_desencriptar = document.querySelector("#btn-desencriptar");
+const btn_copiar = document.querySelector("#btn-copiar");
 
-function btn_encriptar() {
-    let texto = document.getElementById("cuadro_entrada").value;
+// AGREGAMOS EVENTOS
+btn_encriptar.addEventListener("click", cambirSalida);
+btn_encriptar.addEventListener("click", encriptar);
 
-    cambiarInterfaz();
+btn_desencriptar.addEventListener("click", desencriptar);
 
-    let texto_salida = document.getElementById('cuadro_salida');
+btn_copiar.addEventListener("click", copiar);
 
-    texto_salida.innerHTML = encriptadorSimple(texto);
-    
-    document.getElementById('cuadro_entrada').value = ''; // Linea encargada de limpiar el textarea de entrada de datos.
-}
-
-function btn_desEncriptacion() {
-    let texto = document.getElementById('cuadro_entrada').value;
-
-    cambiarInterfaz();
-
-    let texto_salida = document.getElementById('cuadro_salida');
-
-    texto_salida.innerHTML = desEncriptadorSimple(texto);
-
-    document.getElementById('cuadro_entrada').value = ''; // Limpia la patalla de entrada.
-}
-
-function btn_copiar() {
-
-    const textoCopiado = document.getElementById('cuadro_salida').value;
-    
-    navigator.clipboard.writeText(textoCopiado)
-        .then(
-            () => {
-                alert(`Texto copiado ${textoCopiado}`);
-            }
-        )
-        .catch(
-            err => {
-                alert("Error al copiar", err);
-            }
-        );
-
-    cambiarInterfaz2();
-
-}
+// FUNCIONES
 
 /**
- * Oculta un elemento html que
- * se encuntra visible.
- * @param {string} identificador 
+ * Esta función se encarga de ocultar la
+ * image y dos parrafos que se muestran por
+ * defecto. Seguido de eso mostrara un parrafo
+ * y un botón que se ocultaban por defecto.
  */
-function ocultarPorID(identificador) {
-    document.getElementById(identificador).setAttribute('hidden', 'true');
+function cambirSalida() {
+  ocultar("sld-1");
+  ocultar("sld-2");
+  ocultar("sld-3");
+
+  mostrar("salida-txt");
+  mostrar("btn-copiar");
+
+  document.getElementById("btn-desencriptar").disabled = false;
 }
 
-/**
- * Muestra un elemento html que
- * se encontraba oculto.
- * @param {string} identificador 
- */
-function mostrarPorID(identificador){
-    document.getElementById(identificador).removeAttribute('hidden')
-}
+function encriptar() {
+  let palabra = input_text.value;
+  let nuevaPalabra = "";
 
-/**
- * Se encargará de borrar el contenido de
- * un elemento de html.
- * @param {string} identificador 
- */
-function limparValorElemeno(identificador) {
-    document.getElementById(identificador).innerHTML = '';
-}
-
-/**
- * La función se encarga de ocultar y mostras
- * algunos elementos de la interfas gráfica.
- */
-function cambiarInterfaz() {
-    ocultarPorID("muñeco");
-    ocultarPorID("aviso_salida_titulo");
-    ocultarPorID("aviso_salida_parrafo");
-    mostrarPorID("btn_copiar");
-    mostrarPorID("cuadro_salida");
-}
-
-function cambiarInterfaz2() {
-    mostrarPorID("muñeco");
-    mostrarPorID("aviso_salida_titulo");
-    mostrarPorID("aviso_salida_parrafo");
-    ocultarPorID("btn_copiar");
-    ocultarPorID("cuadro_salida");
-}
-
-
-/**
- * PARA UNA FUTURA MEJORA.
- * Usaremos el encriptador de El Cesar en el cual
- * se basa en ponde la tercera letra superior de la
- * letra actual.
- * @param {string} palabra 
- * @returns {string}
- */
-function encriptacionDeCesar(palabra) {
-    let nuevaPalabra = '';
-
-    for (let letra of palabra) {
-        if ( letra !== ' ') {
-            let uniCode = letra.charCodeAt(0);
-            uniCode += 3;
-            nuevaPalabra += String.fromCharCode(uniCode);
-        } else {
-            nuevaPalabra += ' ';
-        }
+  for (let letra of palabra) {
+    switch (letra) {
+      case "a":
+        nuevaPalabra += "ai";
+        break;
+      case "e":
+        nuevaPalabra += "enter";
+        break;
+      case "i":
+        nuevaPalabra += "imes";
+        break;
+      case "o":
+        nuevaPalabra += "ober";
+        break;
+      case "u":
+        nuevaPalabra += "ufat";
+        break;
+      default:
+        nuevaPalabra += letra;
+        break;
     }
+  }
 
-    return nuevaPalabra;
+  input_text.value = "";
+  document.getElementById("salida-txt").textContent = nuevaPalabra;
 }
 
+function desencriptar() {
+  let palabra = input_text.value;
+  let nuevaPalabra = "";
+
+  for (let i = 0; i < palabra.length; i++) {
+    switch (palabra[i]) {
+      case "a":
+        nuevaPalabra += palabra[i];
+        i += 1;
+        continue;
+      case "e":
+        nuevaPalabra += palabra[i];
+        i += 4;
+        continue;
+      case "i":
+        nuevaPalabra += palabra[i];
+        i += 3;
+        continue;
+      case "o":
+        nuevaPalabra += palabra[i];
+        i += 3;
+        continue;
+      case "u":
+        nuevaPalabra += palabra[i];
+        i += 3;
+        continue;
+      default:
+        nuevaPalabra += palabra[i];
+        break;
+    }
+  }
+
+  input_text.value = "";
+  document.getElementById("salida-txt").textContent = nuevaPalabra;
+}
+
+function copiar() {
+  const textoCopiado = document.getElementById("salida-txt").innerText;
+
+  navigator.clipboard
+    .writeText(textoCopiado)
+    .then(() => {
+      alert(`Texto copiado ${textoCopiado}`);
+    })
+    .catch((err) => {
+      alert("Error al copiar", err);
+    });
+}
+
+// FUNCIONES PARA COMOPOSICIÓN
+
 /**
- * 
- * @param {string} palabra 
- * @returns {string}
+ * Ocultara un elemento HTML que escojamos
+ * por su ID.
  */
-function encriptadorSimple(palabra) {
-  
-    let nuevaPalabra = '';
-
-    for (let letra of palabra) {
-        switch (letra) {
-            case 'a':
-                nuevaPalabra += "ai";
-                break;
-            case 'e':
-                nuevaPalabra += "enter";
-                break;
-            case 'i':
-                nuevaPalabra += "imes";
-                break;
-            case 'o':
-                nuevaPalabra += "ober";
-                break;
-            case 'u':
-                nuevaPalabra += "ufat";
-                break;
-            default:
-                nuevaPalabra += letra;
-                break;
-        }
-    }
-
-    return nuevaPalabra;
+function ocultar(id) {
+  document.getElementById(id).setAttribute("hidden", "true");
 }
 
 /**
- * Desencriptador del método Cesar
- * @param {string} palabra
- * @returns {string}
+ * Este elemento se encarga de mostrar un elemento
+ * que esta oculto  con la propiedad de hidden. Se
+ * escoge a traves del ID.
+ * @param {string} id
  */
-function desEncriptacion(palabra) {
-    let nuevaPalabra = ' ';
-
-    for (let letra of palabra) {
-        if (letra !== ' ') {
-            let uniCode = letra.charCodeAt(0);
-            uniCode -= 3;
-            nuevaPalabra += String.fromCharCode(uniCode);
-        } else {
-            nuevaPalabra += ' ';
-        }
-    }
-    return nuevaPalabra;
-}
-
-/**
-*@param {string} palabra 
-*/
-function desEncriptadorSimple(palabra) {
-    let nuevaPalabra = '';
-
-    for (let i = 0; i < palabra.length; i++) {
-        switch (palabra[i]) {
-            case 'a':
-                nuevaPalabra += palabra[i];
-                i += 1;
-                continue;
-            case 'e':
-                nuevaPalabra += palabra[i];
-                i += 4;
-                continue;
-            case 'i':
-                nuevaPalabra += palabra[i];
-                i += 3;
-                continue;
-            case 'o':
-                nuevaPalabra += palabra[i];
-                i += 3;
-                continue;
-            case 'u':
-                nuevaPalabra += palabra[i];
-                i += 3;
-                continue;
-            default:
-                nuevaPalabra += palabra[i];
-                break;
-        }     
-    }
-
-    return nuevaPalabra;
+function mostrar(id) {
+  document.getElementById(id).removeAttribute("hidden");
 }
