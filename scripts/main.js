@@ -11,6 +11,13 @@ btn_desencriptar.addEventListener("click", desencriptar);
 
 btn_copiar.addEventListener("click", copiar);
 
+input_text.addEventListener("keydown", (evt) => {
+  if (evt.key === "Enter") {
+    cambirSalida();
+    encriptar();
+  }
+});
+
 // FUNCIONES
 
 /**
