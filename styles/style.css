@@ -17,6 +17,13 @@ body {
     background-color: #e5e5e5;
 }
 
+button {
+    font-weight: bold;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
 /*=============================*/
 
 header {
@@ -96,10 +103,10 @@ main {
                 height: var(--altura-btn);
                 background-color: #0a3871;
                 color: #d8dfe8;
-                font-weight: bold;
+                /*font-weight: bold;
                 border-radius: 15px;
                 margin-bottom: 20px;
-                font-size: 1.8rem;
+                font-size: 1.8rem;*/
 
                 @media (width < 1060px) {
                     margin: 0;
@@ -193,13 +200,9 @@ main {
             width: calc(100% - var(--ancho-btn));
             height: var(--altura-btn);
             padding: 0;
-            margin: 0 calc(var(--ancho-btn) * 0.5);
-            margin-bottom: 20px;
-            border-radius: 15px;
+            margin: 20px calc(var(--ancho-btn) * 0.5);
             background-color: #0a3871;
             color: #d8dfe8;
-            font-weight: bold;
-            font-size: 1.8rem;
 
             @media (width <= 588px) {
                 --ancho-btn: 25px;
