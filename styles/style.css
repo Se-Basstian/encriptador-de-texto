@@ -46,6 +46,11 @@ main {
   margin-bottom: 10vh;
   gap: 20px;
 
+  @media (width <=1060px) {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+  }
+
   &>.entrada {
     /* CONFIGURA TEXT AREAS, AVISO, BOTONES */
 
@@ -146,7 +151,6 @@ main {
         display: none;
       }
 
-      j
     }
 
     &>p {
@@ -216,7 +220,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 6em;
+  height: 15em;
   margin: 0;
   background-color: var(--color-header-footer);
 
